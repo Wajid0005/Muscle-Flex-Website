@@ -9,6 +9,51 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.opacity = '1';
     }, 100);
 
+    // 1.5 Hero Image Slider Logic
+    const slides = document.querySelectorAll('.hero-slide');
+    const nextBtn = document.getElementById('sliderNext');
+    const prevBtn = document.getElementById('sliderPrev');
+
+    if (slides.length > 0) {
+        let currentSlide = 0;
+        let slideInterval;
+
+        const goToSlide = (index) => {
+            slides[currentSlide].classList.remove('active');
+            slides[currentSlide].style.zIndex = '0';
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            slides[currentSlide].style.zIndex = '1';
+        };
+
+        const nextSlide = () => goToSlide(currentSlide + 1);
+        const prevSlide = () => goToSlide(currentSlide - 1);
+
+        const startSlide = () => {
+            slideInterval = setInterval(nextSlide, 2000); // 2-second auto-slide
+        };
+
+        const resetInterval = () => {
+            clearInterval(slideInterval);
+            // Pause for a moment after manual click, then restart
+            setTimeout(startSlide, 3000);
+        };
+
+        if (nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetInterval();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetInterval();
+            });
+        }
+
+        startSlide();
+    }
+
     // 2. Scroll Navbar Effect
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
@@ -19,25 +64,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Mobile Menu Toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            document.body.classList.toggle('no-scroll');
-            hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    // 2.5 Active Navigation Link Logic
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    navItems.forEach(link => {
+        // Skip the 'Join Now' button so it keeps its distinct styling
+        if (link.classList.contains('btn')) return;
+
+        const linkPath = link.getAttribute('href');
+        if (linkPath === currentPath) {
+            link.classList.add('active');
+        } else {
+            // Ensure no other link has active state
+            link.classList.remove('active');
+        }
+    });
+
+    // 3. Mobile Navigation Scroll
+    const navContainer = document.querySelector('.nav-scroll-container');
+    const scrollLeftBtn = document.querySelector('.scroll-left');
+    const scrollRightBtn = document.querySelector('.scroll-right');
+
+    if (navContainer && scrollLeftBtn && scrollRightBtn) {
+        // Scroll amount per click
+        const scrollAmount = 150;
+
+        scrollLeftBtn.addEventListener('click', () => {
+            navContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
 
-        // Close menu when a link is clicked
-        const navItems = navLinks.querySelectorAll('a');
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-            });
+        scrollRightBtn.addEventListener('click', () => {
+            navContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         });
+
+        // Optional: Hide arrows if scroll isn't needed or at the ends
+        const handleScrollBtns = () => {
+            // Using a small buffer for precision
+            const maxScrollLeft = navContainer.scrollWidth - navContainer.clientWidth;
+            scrollLeftBtn.style.opacity = navContainer.scrollLeft > 0 ? "1" : "0.3";
+            scrollRightBtn.style.opacity = navContainer.scrollLeft >= maxScrollLeft - 1 ? "0.3" : "1";
+        };
+
+        navContainer.addEventListener('scroll', handleScrollBtns);
+        window.addEventListener('resize', handleScrollBtns);
+        // Initial check
+        setTimeout(handleScrollBtns, 100);
     }
 
     // 4. Scroll triggered fade-in animations
@@ -91,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 resultBox.innerHTML = `
-                    <div style="background: rgba(85,0,255,0.1); border-left: 4px solid var(--accent-purple); padding: 15px; border-radius: 4px; margin-top: 15px;">
+                    <div style="background: rgba(211, 84, 0,0.1); border-left: 4px solid var(--accent-purple); padding: 15px; border-radius: 4px; margin-top: 15px;">
                         <span style="font-size: 24px; font-weight: 800; color: var(--text-white); display: block;">${bmi}</span>
                         <strong style="color: var(--accent-purple);">${category}</strong>
                         <p style="margin: 5px 0 0; font-size: 14px;">${tip}</p>
@@ -106,19 +178,39 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
+
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const phone = document.getElementById('contactPhone').value;
+            const interest = document.getElementById('contactInterest').value;
+            const message = document.getElementById('contactMessage').value;
+
+            // Construct WhatsApp Message
+            let waText = `Hi MK Fitness! I'm ${name}.\n\n`;
+            waText += `*Phone:* ${phone}\n`;
+            if (email) waText += `*Email:* ${email}\n`;
+            waText += `*Interested In:* ${interest}\n\n`;
+            waText += `*Message:*\n${message}`;
+
+            const encodedText = encodeURIComponent(waText);
+            const waCurrentOwnerNumber = "917980581070";
+            const waUrl = `https://wa.me/${waCurrentOwnerNumber}?text=${encodedText}`;
+
+            // Open WhatsApp in new tab
+            window.open(waUrl, '_blank');
+
+            // Reset Form and show success locally
             const btn = contactForm.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
-
-            btn.innerHTML = 'SENDING...';
+            btn.innerHTML = 'REDIRECTING...';
             btn.style.opacity = '0.7';
 
-            // Simulate network request
             setTimeout(() => {
                 contactForm.innerHTML = `
-                    <div class="success-message" style="text-align: center; padding: 40px; background: rgba(85,0,255,0.1); border: 1px solid var(--accent-purple); border-radius: 4px;">
-                        <i class="fas fa-check-circle" style="font-size: 48px; color: var(--accent-purple); margin-bottom: 20px;"></i>
-                        <h3 class="text-white">MESSAGE RECEIVED</h3>
-                        <p>Thank you for reaching out. A coach will contact you shortly.</p>
+                    <div class="success-message" style="text-align: center; padding: 40px; background: rgba(211,84,0,0.1); border: 1px solid var(--accent-orange); border-radius: 4px;">
+                        <i class="fas fa-check-circle" style="font-size: 48px; color: var(--accent-orange); margin-bottom: 20px;"></i>
+                        <h3 class="text-white">WAITING FOR WHATSAPP</h3>
+                        <p>If the chat didn't open automatically, <a href="${waUrl}" target="_blank" class="text-orange" style="text-decoration: underline;">click here</a>.</p>
                     </div>
                 `;
             }, 1000);
@@ -134,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lightbox.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; flex-direction: column;';
 
         const lbImage = document.createElement('img');
-        lbImage.style.cssText = 'max-width: 90vw; max-height: 80vh; border: 2px solid var(--accent-purple); box-shadow: 0 0 30px rgba(85,0,255,0.2); object-fit: contain;';
+        lbImage.style.cssText = 'max-width: 90vw; max-height: 80vh; border: 2px solid var(--accent-purple); box-shadow: 0 0 30px rgba(211, 84, 0,0.2); object-fit: contain;';
 
         const lbClose = document.createElement('div');
         lbClose.innerHTML = '<i class="fas fa-times"></i>';
@@ -208,3 +300,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
