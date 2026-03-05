@@ -43,7 +43,7 @@
 
         .form-control:focus {
             outline: none;
-            border-color: var(--accent-purple);
+            border-color: var(--accent-orange);
             background: rgba(255, 255, 255, 0.08);
         }
 
@@ -70,7 +70,7 @@
             background: var(--bg-tertiary);
             padding: 30px;
             margin-top: 30px;
-            border-left: 4px solid var(--accent-purple);
+            border-left: 4px solid var(--accent-orange);
             text-align: left;
         }
 
@@ -85,26 +85,30 @@
 <body class="bg-primary">
 
     <header>
-        <div class="container nav-container">
+        <div class="container logo-container">
             <a href="index.html" class="logo">
                 <i class="fas fa-dumbbell"></i>
                 MUSCLE FLEX
             </a>
-            <button class="hamburger">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="trainers.html">Team</a>
-                <a href="gallery.html">Facility</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="testimonials.html">Reviews</a>
-                <a href="contact.html" class="active btn"
-                    style="padding: 10px 20px; font-size: 12px; margin-left: 15px;">Join Now</a>
-            </nav>
         </div>
     </header>
+    <div class="main-nav">
+        <div class="container" style="position: relative;">
+            <button class="nav-scroll-btn scroll-left"><i class="fas fa-chevron-left"></i></button>
+            <div class="nav-scroll-container">
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="trainers.html">Team</a>
+                    <a href="gallery.html">Facility</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="testimonials.html">Reviews</a>
+                    <a href="contact.html" class="btn" style="padding: 10px 20px; font-size: 12px; margin-left: 15px;">Join Now</a>
+                </nav>
+            </div>
+            <button class="nav-scroll-btn scroll-right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
 
     <div style="height: 120px;"></div>
 
@@ -113,7 +117,7 @@
 
         <div class="container section-relative text-center fade-in-section">
             <h2 class="section-title">GET IN
-                <br><span class="text-purple">TOUCH</span>
+                <br><span class="text-orange">TOUCH</span>
             </h2>
 
             <div class="contact-grid">
@@ -123,22 +127,21 @@
                     <form id="contact-form">
                         <div class="form-group">
                             <label class="form-label">Full Name</label>
-                            <input type="text" class="form-control" required placeholder="Enter your full name">
+                            <input type="text" class="form-control" required placeholder="Enter your full name"
+                                id="contactName">
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Email Address</label>
-                            <input type="email" class="form-control" required placeholder="Enter your email">
+                            <label class="form-label">Email Address (Optional)</label>`r`n                            <input type="email" class="form-control" placeholder="Enter your email" id="contactEmail">
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Phone Number (Optional)</label>
-                            <input type="tel" class="form-control" placeholder="Enter your phone number">
+                            <label class="form-label">Phone Number</label>`r`n                            <input type="tel" class="form-control" required placeholder="Enter your phone number" id="contactPhone">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">I'm Interested In</label>
-                            <select class="form-control" required>
+                            <select class="form-control" required id="contactInterest">
                                 <option value="" disabled selected>Select an option</option>
                                 <option value="membership">General Membership</option>
                                 <option value="pt">Personal Training</option>
@@ -150,8 +153,7 @@
 
                         <div class="form-group">
                             <label class="form-label">Message</label>
-                            <textarea class="form-control" rows="5" required
-                                placeholder="How can MK Fitness help you achieve your goals?"></textarea>
+                            <textarea class="form-control" rows="5" required placeholder="How can MK Fitness help you achieve your goals?" id="contactMessage"></textarea>
                         </div>
 
                         <button type="submit" class="btn" style="width: 100%;">SEND MESSAGE</button>
@@ -173,7 +175,7 @@
                         <div style="margin-bottom: 20px;">
                             <h4
                                 style="color: var(--text-white); display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                                <i class="fas fa-map-marker-alt text-purple"></i> THE FORGE
+                                <i class="fas fa-map-marker-alt text-orange"></i> THE FORGE
                             </h4>
                             <p style="color: var(--text-light); line-height: 1.6;">
                                 5/1, SK. Muslim Rd, Kamarhati<br>
@@ -185,7 +187,7 @@
                         <div>
                             <h4
                                 style="color: var(--text-white); display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                                <i class="fas fa-clock text-purple"></i> HOURS OF OPERATION
+                                <i class="fas fa-clock text-orange"></i> HOURS OF OPERATION
                             </h4>
                             <p style="color: var(--text-light); line-height: 1.6;">
                                 <strong style="color: var(--text-white);">Monday - Sunday:</strong> 5:00 AM - 12:00
@@ -205,7 +207,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3 style="font-weight: 900;"><i class="fas fa-dumbbell text-purple"></i> MUSCLE FLEX</h3>
+                    <h3 style="font-weight: 900;"><i class="fas fa-dumbbell text-orange"></i> MUSCLE FLEX</h3>
                     <p>Also known as MK Fitness. Founded by Kamran Khan and Tanweer Alam from Kamarhati.</p>
                     <div class="social-icons" style="margin-top: 20px;">
                         <a href="https://www.instagram.com/mk_fitness231/" target="_blank"><i
@@ -228,10 +230,10 @@
                 <div class="footer-links">
                     <h4 style="color: var(--text-white); font-weight: 700;">CONTACT</h4>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt text-purple"></i> 5/1, SK. Muslim Rd, Kamarhati, Agarpara...
+                        <li><i class="fas fa-map-marker-alt text-orange"></i> 5/1, SK. Muslim Rd, Kamarhati, Agarpara...
                         </li>
-                        <li><i class="fas fa-clock text-purple"></i> 5:00 AM - 12:00 AM</li>
-                        <li><i class="fab fa-whatsapp text-purple"></i> +91 79805 81070</li>
+                        <li><i class="fas fa-clock text-orange"></i> 5:00 AM - 12:00 AM</li>
+                        <li><i class="fab fa-whatsapp text-orange"></i> +91 79805 81070</li>
                     </ul>
                 </div>
             </div>
@@ -248,3 +250,5 @@
 </body>
 
 </html>
+
+
