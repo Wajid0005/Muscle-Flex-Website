@@ -23,7 +23,7 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            border: 3px solid var(--accent-purple);
+            border: 3px solid var(--accent-orange);
             object-fit: cover;
             margin-bottom: 20px;
         }
@@ -39,7 +39,7 @@
             top: 20px;
             right: 30px;
             font-size: 60px;
-            color: rgba(85, 0, 255, 0.1);
+            color: rgba(211, 84, 0, 0.1);
         }
     </style>
 </head>
@@ -47,26 +47,30 @@
 <body class="bg-primary">
 
     <header>
-        <div class="container nav-container">
+        <div class="container logo-container">
             <a href="index.html" class="logo">
                 <i class="fas fa-dumbbell"></i>
                 MUSCLE FLEX
             </a>
-            <button class="hamburger">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="trainers.html">Team</a>
-                <a href="gallery.html">Facility</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="testimonials.html" class="active">Reviews</a>
-                <a href="contact.html" class="btn" style="padding: 10px 20px; font-size: 12px; margin-left: 15px;">Join
-                    Now</a>
-            </nav>
         </div>
     </header>
+    <div class="main-nav">
+        <div class="container" style="position: relative;">
+            <button class="nav-scroll-btn scroll-left"><i class="fas fa-chevron-left"></i></button>
+            <div class="nav-scroll-container">
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="trainers.html">Team</a>
+                    <a href="gallery.html">Facility</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="testimonials.html">Reviews</a>
+                    <a href="contact.html" class="btn" style="padding: 10px 20px; font-size: 12px; margin-left: 15px;">Join Now</a>
+                </nav>
+            </div>
+            <button class="nav-scroll-btn scroll-right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
 
     <div style="height: 120px;"></div>
 
@@ -79,7 +83,7 @@
 
         <div class="container section-relative text-center fade-in-section">
             <h2 class="section-title">THE
-                <br><span class="text-purple">BROTHERHOOD</span>
+                <br><span class="text-orange">BROTHERHOOD</span>
             </h2>
 
             <div
@@ -98,7 +102,7 @@
                         invest their time in your growth. It truly feels like a family."
                     </p>
                     <h4 style="font-size: 20px; text-transform: uppercase;">PRADYUT</h4>
-                    <span style="color: var(--accent-purple); font-size: 12px; font-weight: 700;">FITNESS
+                    <span style="color: var(--accent-orange); font-size: 12px; font-weight: 700;">FITNESS
                         LIFESTYLE</span>
                 </div>
 
@@ -115,7 +119,7 @@
                         transforming yourself, MK Fitness is the only place to be."
                     </p>
                     <h4 style="font-size: 20px; text-transform: uppercase;">AVIK DUTTA</h4>
-                    <span style="color: var(--accent-purple); font-size: 12px; font-weight: 700;">MUSCLE GAIN</span>
+                    <span style="color: var(--accent-orange); font-size: 12px; font-weight: 700;">MUSCLE GAIN</span>
                 </div>
 
                 <!-- Review 3 -->
@@ -131,7 +135,7 @@
                         and correct your form. Best decision I made."
                     </p>
                     <h4 style="font-size: 20px; text-transform: uppercase;">RIJU</h4>
-                    <span style="color: var(--accent-purple); font-size: 12px; font-weight: 700;">STRENGTH
+                    <span style="color: var(--accent-orange); font-size: 12px; font-weight: 700;">STRENGTH
                         TRAINING</span>
                 </div>
 
@@ -150,3 +154,6 @@
 </body>
 
 </html>
+
+
+
