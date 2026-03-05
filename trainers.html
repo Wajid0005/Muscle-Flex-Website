@@ -19,7 +19,7 @@
         }
 
         .trainer-card:hover {
-            border-top-color: var(--accent-purple);
+            border-top-color: var(--accent-orange);
             transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
@@ -47,7 +47,7 @@
         .specialty-tag {
             font-size: 12px;
             font-weight: 700;
-            color: var(--accent-purple);
+            color: var(--accent-orange);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 10px;
@@ -60,26 +60,30 @@
 
     <!-- Header Navigation -->
     <header>
-        <div class="container nav-container">
+        <div class="container logo-container">
             <a href="index.html" class="logo">
                 <i class="fas fa-dumbbell"></i>
                 MUSCLE FLEX
             </a>
-            <button class="hamburger">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="trainers.html" class="active">Team</a>
-                <a href="gallery.html">Facility</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="testimonials.html">Reviews</a>
-                <a href="contact.html" class="btn" style="padding: 10px 20px; font-size: 12px; margin-left: 15px;">Join
-                    Now</a>
-            </nav>
         </div>
     </header>
+    <div class="main-nav">
+        <div class="container" style="position: relative;">
+            <button class="nav-scroll-btn scroll-left"><i class="fas fa-chevron-left"></i></button>
+            <div class="nav-scroll-container">
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="trainers.html">Team</a>
+                    <a href="gallery.html">Facility</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="testimonials.html">Reviews</a>
+                    <a href="contact.html" class="btn" style="padding: 10px 20px; font-size: 12px; margin-left: 15px;">Join Now</a>
+                </nav>
+            </div>
+            <button class="nav-scroll-btn scroll-right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
 
     <!-- Page Header Area -->
     <div style="height: 120px;"></div>
@@ -90,7 +94,7 @@
 
         <div class="container section-relative text-center fade-in-section">
             <h2 class="section-title">MEET YOUR
-                <br><span class="text-purple">COACHES</span>
+                <br><span class="text-orange">COACHES</span>
             </h2>
             <p style="max-width: 600px; margin: 0 auto 60px; color: var(--text-muted); font-size: 18px;">
                 The heart of MK Fitness. Expert guidance, absolute discipline, and a brotherhood that pushes you beyond
@@ -161,7 +165,7 @@
                 ... (Footer content to be linked via external component in a real app, keeping hardcoded for static
                 constraint) ...
                 <div class="footer-brand">
-                    <h3 style="font-weight: 900;"><i class="fas fa-dumbbell text-purple"></i> MUSCLE FLEX</h3>
+                    <h3 style="font-weight: 900;"><i class="fas fa-dumbbell text-orange"></i> MUSCLE FLEX</h3>
                     <p>Also known as MK Fitness. Founded by Kamran Khan and Tanweer Alam from Kamarhati.</p>
                 </div>
             </div>
@@ -176,3 +180,6 @@
 </body>
 
 </html>
+
+
+
